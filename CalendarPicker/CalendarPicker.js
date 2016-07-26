@@ -47,7 +47,7 @@ var Day = React.createClass({
     selectedDayTextColor: React.PropTypes.string,
     textStyle: Text.propTypes.style,
     markedDays: React.PropTypes.array,
-    markedDayStyles: View.propTypes.style,
+    markedDayStyles: View.propTypes.style
   },
   getDefaultProps () {
     return {
@@ -131,7 +131,7 @@ var Days = React.createClass({
     selectedDayTextColor: React.PropTypes.string,
     textStyle: Text.propTypes.style,
     markedDays: React.PropTypes.array,
-    markedDayStyles: View.propTypes.style,
+    markedDayStyles: View.propTypes.style
   },
   getInitialState() {
     return {
@@ -408,7 +408,7 @@ var CalendarPicker = React.createClass({
     weekDaysWrapperStyles: View.propTypes.style,
     markedDays: React.PropTypes.array,
     markedDayStyles: View.propTypes.style,
-    weekDayLabelsFirst: React.PropTypes.boolean,
+    weekDayLabelsFirst: React.PropTypes.bool
   },
   getDefaultProps() {
     return {
