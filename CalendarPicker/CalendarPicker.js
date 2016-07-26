@@ -87,7 +87,7 @@ var Day = React.createClass({
             </Text>
           </View>
         );
-      } 
+      }
       else {
         return (
           <View style={styles.dayWrapper}>
@@ -218,7 +218,9 @@ var Days = React.createClass({
 var WeekDaysLabels = React.createClass({
   propTypes: {
     screenWidth: React.PropTypes.number,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
+    weekDaysTextStyle: Text.propTypes.style,
+    weekDaysWrapperStyles: View.propTypes.style
   },
   getInitialState() {
     this.DAY_WIDTH = (this.props.screenWidth - 16)/7;
@@ -226,8 +228,10 @@ var WeekDaysLabels = React.createClass({
   },
   render() {
     return (
-      <View style={styles.dayLabelsWrapper}>
-        { (this.props.weekdays || WEEKDAYS).map((day, key) => { return <Text key={key} style={[styles.dayLabels, this.props.textStyle]}>{day}</Text>; }) }
+      <View style={[styles.dayLabelsWrapper, this.props.weekDaysWrapperStyles]}>
+        { (this.props.weekdays || WEEKDAYS).map((day, key) => {
+          return <Text key={key} style={[styles.dayLabels, this.props.textStyle, this.props.weekDaysTextStyle]}>{day}</Text>;
+        }) }
       </View>
     );
   }
@@ -380,7 +384,9 @@ var CalendarPicker = React.createClass({
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
+    weekDaysTextStyle: Text.propTypes.style,
+    weekDaysWrapperStyles: View.propTypes.style
   },
   getDefaultProps() {
     return {
@@ -459,7 +465,10 @@ var CalendarPicker = React.createClass({
         <WeekDaysLabels
           screenWidth={this.props.screenWidth}
           weekdays={this.props.weekdays}
-          textStyle={this.props.textStyle} />
+          textStyle={this.props.textStyle}
+          weekDaysTextStyle={this.props.weekDaysTextStyle}
+          weekDaysWrapperStyles={this.props.weekDaysWrapperStyles}
+          />
 
         <Days
           maxDate={this.props.maxDate}
