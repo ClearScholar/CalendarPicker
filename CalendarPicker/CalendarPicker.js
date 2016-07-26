@@ -87,6 +87,7 @@ var Day = React.createClass({
               <Text style={[styles.dayLabel, textStyle, selectedDayTextColorStyle]}>
                 {this.props.day}
               </Text>
+              {this.checkIsDayMarked() ? <View style={this.props.markedDayStyles} /> : null}
             </TouchableOpacity>
           </View>
         </View>
