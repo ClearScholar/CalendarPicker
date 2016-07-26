@@ -408,6 +408,7 @@ var CalendarPicker = React.createClass({
     weekDaysWrapperStyles: View.propTypes.style,
     markedDays: React.PropTypes.array,
     markedDayStyles: View.propTypes.style,
+    weekDayLabelsFirst: React.PropTypes.boolean,
   },
   getDefaultProps() {
     return {
@@ -467,29 +468,64 @@ var CalendarPicker = React.createClass({
     this.props.onDateChange(date);
   },
 
+  renderHeader() {
+    if (this.props.weekDayLabelsFirst) {
+      return (
+        <View>
+          <WeekDaysLabels
+            screenWidth={this.props.screenWidth}
+            weekdays={this.props.weekdays}
+            textStyle={this.props.textStyle}
+            weekDaysTextStyle={this.props.weekDaysTextStyle}
+            weekDaysWrapperStyles={this.props.weekDaysWrapperStyles}
+            />
+
+          <HeaderControls
+            maxDate={this.props.maxDate}
+            minDate={this.props.minDate}
+            year={this.state.year}
+            month={this.state.month}
+            onMonthChange={this.onMonthChange}
+            getNextYear={this.getNextYear}
+            getPrevYear={this.getPrevYear}
+            months={this.props.months}
+            previousTitle={this.props.previousTitle}
+            nextTitle={this.props.nextTitle}
+            textStyle={this.props.textStyle} />
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <HeaderControls
+            maxDate={this.props.maxDate}
+            minDate={this.props.minDate}
+            year={this.state.year}
+            month={this.state.month}
+            onMonthChange={this.onMonthChange}
+            getNextYear={this.getNextYear}
+            getPrevYear={this.getPrevYear}
+            months={this.props.months}
+            previousTitle={this.props.previousTitle}
+            nextTitle={this.props.nextTitle}
+            textStyle={this.props.textStyle} />
+
+          <WeekDaysLabels
+            screenWidth={this.props.screenWidth}
+            weekdays={this.props.weekdays}
+            textStyle={this.props.textStyle}
+            weekDaysTextStyle={this.props.weekDaysTextStyle}
+            weekDaysWrapperStyles={this.props.weekDaysWrapperStyles}
+            />
+        </View>
+      );
+    }
+  },
+
   render() {
     return (
       <View style={styles.calendar}>
-        <HeaderControls
-          maxDate={this.props.maxDate}
-          minDate={this.props.minDate}
-          year={this.state.year}
-          month={this.state.month}
-          onMonthChange={this.onMonthChange}
-          getNextYear={this.getNextYear}
-          getPrevYear={this.getPrevYear}
-          months={this.props.months}
-          previousTitle={this.props.previousTitle}
-          nextTitle={this.props.nextTitle}
-          textStyle={this.props.textStyle} />
-
-        <WeekDaysLabels
-          screenWidth={this.props.screenWidth}
-          weekdays={this.props.weekdays}
-          textStyle={this.props.textStyle}
-          weekDaysTextStyle={this.props.weekDaysTextStyle}
-          weekDaysWrapperStyles={this.props.weekDaysWrapperStyles}
-          />
+        {this.renderHeader()}
 
         <Days
           maxDate={this.props.maxDate}
