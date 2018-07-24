@@ -56,7 +56,8 @@
     "eslint-plugin-react": "^5.1.1",
     "jest-cli": "^11.0.0",
     "react": "^0.14.8",
-    "react-native": "^0.25.1"
+    "react-native": "^0.25.1",
+    "prop-types": "^15.6.2",
   },
   "jest": {
     "scriptPreprocessor": "node_modules/react-native/jestSupport/preprocessor.js",
