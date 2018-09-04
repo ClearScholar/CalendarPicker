@@ -7,6 +7,7 @@
 'use strict';
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import {
   Dimensions,
   StyleSheet,
@@ -32,7 +33,7 @@ const IPHONE6_WIDTH = 375;
 var initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
 var styles = StyleSheet.create(makeStyles(initialScale));
 
-var Day = React.createClass({
+var Day = createReactClass({
   propTypes: {
     date: PropTypes.instanceOf(Date),
     onDayChange: PropTypes.func,
@@ -122,7 +123,7 @@ var Day = React.createClass({
   }
 });
 
-var Days = React.createClass({
+var Days = createReactClass({
   propTypes: {
     maxDate: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
@@ -237,7 +238,7 @@ var Days = React.createClass({
 
 });
 
-var WeekDaysLabels = React.createClass({
+var WeekDaysLabels = createReactClass({
   propTypes: {
     screenWidth: PropTypes.number,
     textStyle: Text.propTypes.style,
@@ -259,7 +260,7 @@ var WeekDaysLabels = React.createClass({
   }
 });
 
-var HeaderControls = React.createClass({
+var HeaderControls = createReactClass({
   propTypes: {
     month: PropTypes.number.isRequired,
     year: PropTypes.number,
@@ -391,7 +392,7 @@ var HeaderControls = React.createClass({
   }
 });
 
-var CalendarPicker = React.createClass({
+var CalendarPicker = createReactClass({
   propTypes: {
     maxDate: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
